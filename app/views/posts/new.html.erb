@@ -1,0 +1,27 @@
+<h1>NEW POST!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |e| %>
+      <li>
+        <%= e %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<hr>
+<%= form_for @post do |f|%>
+  <%=f.label :title %>
+  <%=f.text_area :title %><br>
+  <%=f.label :content %>
+  <%=f.text_area :content %><br>
+  <%=f.label :likes %>
+  <%=f.text_area :likes %><br>
+  <%=f.collection_select :blogger_id, Blogger.all, :id, :name%><br>
+  <%=f.collection_select :destination_id, Destination.all, :id, :name%><br>
+  <hr>
+  <%= f.submit %>
+<%end%>
+<hr>
